@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Assets/css/dashboard.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Navbar (same as index) -->
+    <nav>
+        <div class="logo">
+            <h2>Project Logo</h2>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" onclick="openModal('signup-modal')">Sign Up</a></li>
+                <li><a href="#" onclick="openModal('login-modal')">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome, User!</h1>
+            <p>Here’s your activity overview.</p>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Completed Tasks</h3>
+                        <p>25</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Upcoming Reminders</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Last Activity</h3>
+                        <p>2 hours ago</p>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h2>Recent Activities</h2>
+                    <ul>
+                        <li>Created a new task: "Finish Dashboard" - 2 hours ago</li>
+                        <li>Completed task: "Design Header" - 1 day ago</li>
+                        <li>Set reminder for "Review code" - 3 days ago</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

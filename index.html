@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Scheduler</title>
+
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="Assets/css/mediaquery.css">
+</head>
+
+<body>
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">RemindFlow</div>
+
+            <!-- Menu Icon: Hamburger (☰) -->
+            <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+
+            <ul class="nav-links" id="nav-links">
+                <!-- Logo inside the sliding menu -->
+                <li class="nav-logo-mobile">RemindFlow</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><button onclick="openModal('login-modal')">Login</button></li>
+                <li><button onclick="openModal('signup-modal')">Sign Up</button></li>
+            </ul>
+        </nav>
+
+
+        <!-- Sign Up Modal -->
+        <section id="signup-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('signup-modal')">&times;</span>
+                <h2>Sign Up</h2>
+                <form action="signup.php" method="POST">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="fullname" required>
+
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required>
+
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required>
+
+                    <button type="submit" class="modal-btn">Create Account</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Login Modal -->
+        <section id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+                <h2>Login</h2>
+                <form action="login.php" method="POST">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required>
+
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required>
+
+                    <button type="submit" class="modal-btn">Login</button>
+                </form>
+            </div>
+        </section>
+
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to <br> <span>RemindFlow</span></h1>
+                <p>Your ultimate scheduler and reminder tool, helping you stay on track with all your tasks and events.
+                </p>
+                <div class="cta-buttons">
+                    <button class="cta-btn">Get Started</button>
+                    <button class="cta-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Assets/img/Untitled design.png" alt="Scheduler Illustration">
+            </div>
+        </section>
+    </main>
+
+    <script src="Assets/js/script.js"></script>
+</body>
+
+</html>
