@@ -1,7 +1,44 @@
 /* Mobile Styles - @media query */
 @media (max-width: 768px) {
+    h1 {
+        font-size: 32px !important;
+    }
+
+    h2 {
+        font-size: 28px !important;
+    }
+
+    h3 {
+        font-size: 24px !important;
+    }
+
+    h4 {
+        font-size: 20px !important;
+    }
+
+    h5 {
+        font-size: 18px !important;
+    }
+
+    h6 {
+        font-size: 16px !important;
+    }
+
+    p {
+        font-size: 16px !important;
+        line-height: 1.6;
+    }
+
+    .nav-center {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .menu-toggle {
         display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
 
     .nav-links {
@@ -11,10 +48,11 @@
         left: -100%;
         width: 70%;
         height: 100vh;
-        background-color: #6a0dad;
-        padding: 60px 20px;
+        background-color: #f3f3f3;
+        padding: 80px 20px;
         transition: left 0.3s ease;
-        z-index: 1;
+        z-index: 200;
+        margin: 0;
     }
 
     .nav-links.show {
@@ -25,42 +63,23 @@
         margin: 20px 0;
     }
 
-    /* Logo inside sliding menu */
+
     .nav-logo-mobile {
+        display: block !important;
+        position: absolute;
+        top: 20px;
+        left: 30px;
         font-size: 24px;
         font-weight: bold;
-        color: white;
-        margin-bottom: 40px;
-        display: block !important;
-        /* Space from top */
+        color: black;
+    }
+
+    .nav-right {
+        display: none;
     }
 
 
-
-}
-
-
-/* ========== RESPONSIVE TWEAKS ========== */
-@media (max-width: 480px) {
-    .modal-content {
-      padding: 20px;
-      border-radius: 8px;
-    }
-  
-    .modal-content input,
-    .modal-btn {
-      font-size: 14px;
-    }
-  
-    .close-btn {
-      font-size: 22px;
-      top: 10px;
-      right: 15px;
-    }
-  }
-
-/* Mobile Styles - @media query */
-@media (max-width: 768px) {
+    /* The hero */
     .hero {
         flex-direction: column;
         align-items: center;
@@ -90,7 +109,7 @@
         width: 100%;
         padding: 15px;
         margin: 10px 0;
-        
+
     }
 
     .hero-image {
@@ -100,5 +119,24 @@
     .hero-image img {
         width: 100%;
         border-radius: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .modal-content input,
+    .modal-btn {
+        font-size: 14px;
+    }
+
+    .close-btn {
+        font-size: 22px;
+        top: 10px;
+        right: 15px;
     }
 }

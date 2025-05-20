@@ -1,76 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>RemindFlow Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assets/css/dashboard.css">
-    <script src="script.js" defer></script>
 </head>
+
 <body>
-    <!-- Navbar (same as index) -->
-    <nav>
-        <div class="logo">
-            <h2>Project Logo</h2>
-        </div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#" onclick="openModal('signup-modal')">Sign Up</a></li>
-                <li><a href="#" onclick="openModal('login-modal')">Login</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Dashboard Section -->
-    <section class="dashboard-container">
-        <div class="dashboard-header">
-            <h1>Welcome, User!</h1>
-            <p>Here’s your activity overview.</p>
-        </div>
-
-        <div class="dashboard-content">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <h3>Quick Links</h3>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">RemindFlow</div>
+            <nav>
                 <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Create Reminder</a></li>
+                    <li><a href="#">Scheduled Emails</a></li>
+                    <li><a href="#">History</a></li>
                     <li><a href="#">Settings</a></li>
+                    <li><a href="#">Logout</a></li>
                 </ul>
-            </aside>
-
-            <!-- Main Content Area -->
-            <div class="main-content">
-                <div class="stats">
-                    <div class="stat-card">
-                        <h3>Completed Tasks</h3>
-                        <p>25</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Upcoming Reminders</h3>
-                        <p>5</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Last Activity</h3>
-                        <p>2 hours ago</p>
-                    </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="header-title">Welcome, User</div>
+                <div class="search-user">
+                    <input type="text" placeholder="Search...">
+                    <div class="user-icon">U</div>
                 </div>
-
-                <div class="recent-activities">
-                    <h2>Recent Activities</h2>
-                    <ul>
-                        <li>Created a new task: "Finish Dashboard" - 2 hours ago</li>
-                        <li>Completed task: "Design Header" - 1 day ago</li>
-                        <li>Set reminder for "Review code" - 3 days ago</li>
-                    </ul>
-                </div>
-            </div>
+            </header>
+            <section class="stats">
+                <div class="stat-card">Total Reminders: <span id="total-reminders">0</span></div>
+                <div class="stat-card">Upcoming Events: <span id="upcoming-events">0</span></div>
+                <div class="stat-card">Emails Sent: <span id="emails-sent">0</span></div>
+                <div class="stat-card">Missed Alerts: <span id="missed-alerts">0</span></div>
+            </section>
+            <section class="recent-reminders">
+                <h2>Recent Reminders</h2>
+                <ul id="reminder-list"></ul>
+            </section>
+            <section class="calendar">
+                <h2>Calendar</h2>
+                <input type="date" id="date-picker">
+            </section>
+            <button class="add-reminder-btn" onclick="openModal()">Add New Reminder</button>
+        </main>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Reminder</h2>
+            <input type="text" id="reminder-input" placeholder="Enter reminder">
+            <button onclick="addReminder()">Add</button>
         </div>
-    </section>
-
+    </div>
+    <script src="Assets/js/dashboard.js"></script>
 </body>
+
 </html>

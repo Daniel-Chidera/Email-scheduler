@@ -16,17 +16,21 @@
         <nav class="navbar">
             <div class="nav-logo">RemindFlow</div>
 
-            <!-- Menu Icon: Hamburger (☰) -->
-            <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+            <div class="nav-center">
+                <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">&#9776;</div>
 
-            <ul class="nav-links" id="nav-links">
-                <!-- Logo inside the sliding menu -->
-                <li class="nav-logo-mobile">RemindFlow</li>
-                <li><a href="#">Home</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><button onclick="openModal('login-modal')">Login</button></li>
-                <li><button onclick="openModal('signup-modal')">Sign Up</button></li>
-            </ul>
+                <ul class="nav-links" id="nav-links">
+                    <li class="nav-logo-mobile">RemindFlow</li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><button onclick="openModal('login-modal')">Login</button></li>
+                    <li><button onclick="openModal('signup-modal')">Sign Up</button></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <button class="cta-btn">Book Us</button>
+            </div>
         </nav>
 
 
@@ -72,16 +76,22 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Welcome to <br> <span>RemindFlow</span></h1>
-                <p>Your ultimate scheduler and reminder tool, helping you stay on track with all your tasks and events.
-                </p>
+                <p>Welcome to RemindFlow</p>
+                <h1>Your Ultimate Scheduler, <br><span>And Reminder Tool.</span></h1>
+                <p>Schedule emails effortlessly and stay ahead. RemindFlow helps you manage your time and messages — so
+                    nothing slips through the cracks.</p>
                 <div class="cta-buttons">
                     <button class="cta-btn">Get Started</button>
                     <button class="cta-btn">Learn More</button>
                 </div>
             </div>
+
             <div class="hero-image">
-                <img src="Assets/img/Untitled design.png" alt="Scheduler Illustration">
+                <div class="hypno-wrapper">
+                    <div class="hypno-spin"></div>
+                    <img src="Assets/img/pexels-stasknop-1198264-removebg-preview (1).png" alt="Email Icon"
+                        class="spinner-img">
+                </div>
             </div>
         </section>
     </main>
