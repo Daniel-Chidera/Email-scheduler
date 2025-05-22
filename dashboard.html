@@ -5,55 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RemindFlow Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assets/css/dashboard.css">
 </head>
 
 <body>
+
     <div class="container">
         <aside class="sidebar">
             <div class="logo">RemindFlow</div>
             <nav>
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Create Reminder</a></li>
-                    <li><a href="#">Scheduled Emails</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Create Reminder</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Scheduled Emails</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
         </aside>
-        <main class="main-content">
+
+        <main class="main-content full">
             <header class="header">
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i id="menu-icon" class="fas fa-bars"></i>
+                </div>
+
                 <div class="header-title">Welcome, User</div>
+
                 <div class="search-user">
                     <input type="text" placeholder="Search...">
                     <div class="user-icon">U</div>
                 </div>
             </header>
+
             <section class="stats">
                 <div class="stat-card">Total Reminders: <span id="total-reminders">0</span></div>
                 <div class="stat-card">Upcoming Events: <span id="upcoming-events">0</span></div>
                 <div class="stat-card">Emails Sent: <span id="emails-sent">0</span></div>
                 <div class="stat-card">Missed Alerts: <span id="missed-alerts">0</span></div>
             </section>
+
             <section class="recent-reminders">
                 <h2>Recent Reminders</h2>
-                <ul id="reminder-list"></ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reminder</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reminder-list"></tbody>
+                </table>
             </section>
+
             <section class="calendar">
                 <h2>Calendar</h2>
                 <input type="date" id="date-picker">
             </section>
+
             <button class="add-reminder-btn" onclick="openModal()">Add New Reminder</button>
         </main>
     </div>
+
     <div class="modal" id="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Add New Reminder</h2>
             <input type="text" id="reminder-input" placeholder="Enter reminder">
+            <input type="email" id="email-input" placeholder="Enter email">
+            <input type="date" id="date-input">
+            <input type="time" id="time-input">
             <button onclick="addReminder()">Add</button>
         </div>
     </div>
