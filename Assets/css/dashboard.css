@@ -42,6 +42,9 @@ body {
 
 nav ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    /* gap: 2px; */
 }
 
 nav ul li {
@@ -160,6 +163,153 @@ nav ul li a:hover {
     border-bottom: none;
 }
 
+/* for the edit */
+.action-row td {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 12px 16px;
+}
+
+.action-cell {
+    padding: 12px 16px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.edit-btn,
+.delete-btn {
+    background: white !important;
+    border: 1px solid black !important;
+    padding: 8px 12px !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    font-size: 10px !important;
+    color: black !important;
+    transition: background 0.3s !important;
+}
+
+.edit-btn:hover {
+    background: #dce6f1 !important;
+}
+
+.delete-btn:hover {
+    background: #fddede !important;
+}
+
+.action-cell button {
+    margin: 0 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.action-cell button:hover {
+    background-color: #555;
+}
+
+/* End of the edit */
+
+/* for edit modal */
+/* Edit Modal styles */
+.edit-modal,
+.delete-modal {
+  display: none;/* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+.edit-modal-content,
+.delete-modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Close button */
+.edit-modal-close {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Form styling inside edit modal */
+.edit-modal-content form label {
+  display: block;
+  margin: 12px 0 6px 0;
+  font-weight: 600;
+}
+
+.edit-modal-content form input[type="text"],
+.edit-modal-content form input[type="email"],
+.edit-modal-content form input[type="date"],
+.edit-modal-content form input[type="time"] {
+  width: 100%;
+  padding: 7px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.edit-modal-content form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #4A90E2;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Delete modal buttons container */
+.delete-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.delete-modal-buttons button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#deleteModalConfirmBtn {
+  background-color: #d9534f; /* Red */
+  color: white;
+}
+
+#deleteModalCancelBtn {
+  background-color: #6c757d; /* Gray */
+  color: white;
+}
+
+
+
 .calendar {
     margin-bottom: 20px;
 }
@@ -191,7 +341,7 @@ nav ul li a:hover {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
@@ -219,6 +369,36 @@ nav ul li a:hover {
 
 .modal-content button:hover {
     background-color: #0076b3;
+}
+
+.repeat-reminder {
+    margin-top: 15px;
+}
+
+.repeat-toggle {
+    display: flex;
+    width: auto;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.repeat-toggle input {
+    width: auto;
+}
+
+#repeat-options {
+    display: none;
+    margin-top: 10px;
+}
+
+#repeat-options select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
 }
 
 .close {

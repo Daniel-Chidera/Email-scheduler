@@ -11,18 +11,17 @@
 </head>
 
 <body>
-
     <div class="container">
         <aside class="sidebar">
             <div class="logo">RemindFlow</div>
             <nav>
                 <ul>
                     <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-plus-circle"></i> Create Reminder</a></li>
+                    <li><a href="#" onclick="openModal()"><i class="fas fa-plus-circle"></i> Create Reminder</a></li>
                     <li><a href="#"><i class="fas fa-envelope"></i> Scheduled Emails</a></li>
                     <li><a href="#"><i class="fas fa-history"></i> History</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
         </aside>
@@ -61,7 +60,45 @@
                     </thead>
                     <tbody id="reminder-list"></tbody>
                 </table>
+
+                <!-- Edit Reminder Modal -->
+                <div id="editModal" class="edit-modal">
+                    <div class="edit-modal-content">
+                        <span class="edit-modal-close" id="editModalCloseBtn">&times;</span>
+                        <h2>Edit Reminder</h2>
+                        <form id="editModalForm">
+                            <label for="editModalText">Reminder:</label>
+                            <input type="text" id="editModalText" name="editModalText" required />
+
+                            <label for="editModalEmail">Email:</label>
+                            <input type="email" id="editModalEmail" name="editModalEmail" required />
+
+                            <label for="editModalDate">Date:</label>
+                            <input type="date" id="editModalDate" name="editModalDate" required />
+
+                            <label for="editModalTime">Time:</label>
+                            <input type="time" id="editModalTime" name="editModalTime" required />
+
+                            <input type="hidden" id="editModalIndex" name="editModalIndex" />
+
+                            <button type="submit">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Delete Confirmation Modal -->
+                <div id="deleteModal" class="delete-modal">
+                    <div class="delete-modal-content">
+                        <h3>Are you sure you want to delete this reminder?</h3>
+                        <div class="delete-modal-buttons">
+                            <button id="deleteModalConfirmBtn">Yes, Delete</button>
+                            <button id="deleteModalCancelBtn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+
 
             <section class="calendar">
                 <h2>Calendar</h2>
@@ -80,10 +117,29 @@
             <input type="email" id="email-input" placeholder="Enter email">
             <input type="date" id="date-input">
             <input type="time" id="time-input">
+
+            <div class="repeat-reminder">
+                <label class="repeat-toggle">
+                    <input type="checkbox" id="repeat-checkbox">
+                    Repeat Reminder?
+                </label>
+
+                <div id="repeat-options">
+                    <label for="repeat-frequency">Repeat Frequency:</label>
+                    <select id="repeat-frequency">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+            </div>
+
             <button onclick="addReminder()">Add</button>
         </div>
     </div>
     <script src="Assets/js/dashboard.js"></script>
+    <script src="Assets/js/remindermodal.js"></script>
 </body>
 
 </html>
