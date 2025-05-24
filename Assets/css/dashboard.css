@@ -222,90 +222,96 @@ nav ul li a:hover {
 /* Edit Modal styles */
 .edit-modal,
 .delete-modal {
-  display: none;/* Hidden by default */
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: auto;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
 }
 
 .edit-modal-content,
 .delete-modal-content {
-  background-color: white;
-  margin: auto;
-  padding: 20px;
-  border-radius: 6px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  position: relative;
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 /* Close button */
 .edit-modal-close {
-  position: absolute;
-  right: 15px;
-  top: 12px;
-  font-size: 24px;
-  cursor: pointer;
-  user-select: none;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* Form styling inside edit modal */
 .edit-modal-content form label {
-  display: block;
-  margin: 12px 0 6px 0;
-  font-weight: 600;
+    display: block;
+    margin: 12px 0 6px 0;
+    font-weight: 600;
 }
 
 .edit-modal-content form input[type="text"],
 .edit-modal-content form input[type="email"],
 .edit-modal-content form input[type="date"],
 .edit-modal-content form input[type="time"] {
-  width: 100%;
-  padding: 7px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+    width: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
 .edit-modal-content form button {
-  margin-top: 15px;
-  padding: 10px 15px;
-  border: none;
-  background-color: #4A90E2;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #4A90E2;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Delete modal buttons container */
 .delete-modal-buttons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .delete-modal-buttons button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #deleteModalConfirmBtn {
-  background-color: #d9534f; /* Red */
-  color: white;
+    background-color: #d9534f;
+    /* Red */
+    color: white;
 }
 
 #deleteModalCancelBtn {
-  background-color: #6c757d; /* Gray */
-  color: white;
+    background-color: #6c757d;
+    /* Gray */
+    color: white;
 }
 
 
@@ -327,6 +333,7 @@ nav ul li a:hover {
     background-color: #0056b3;
 }
 
+/* ===THE ADD REMINDER MODAL=== */
 .modal {
     display: none;
     position: fixed;
@@ -349,8 +356,11 @@ nav ul li a:hover {
     border-radius: 8px;
 }
 
-.modal-content input {
-    width: 100%;
+.modal-content input,
+.modal-content input#date-input,
+.modal-content input#time-input,
+select#repeat-frequency {
+    width: 100% !important;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -384,7 +394,7 @@ nav ul li a:hover {
 }
 
 .repeat-toggle input {
-    width: auto;
+    width: auto !important;
 }
 
 #repeat-options {
