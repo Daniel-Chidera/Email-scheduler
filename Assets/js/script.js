@@ -1,3 +1,4 @@
+// TOGGLE MEU FOR THE INDEX.HTML
 function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
   const toggleIcon = document.getElementById('menu-toggle');

@@ -14,13 +14,13 @@
     <!-- NAVIGATION BAR -->
     <header>
         <nav class="navbar">
-            <div class="nav-logo">RemindFlow</div>
+            <div class="nav-logo">Email-Scheduler</div>
 
             <div class="nav-center">
                 <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">&#9776;</div>
 
                 <ul class="nav-links" id="nav-links">
-                    <li class="nav-logo-mobile">RemindFlow</li>
+                    <li class="nav-logo-mobile">Email-Scheduler</li>
                     <li><a href="#">Home</a></li>
                     <li><a href="dashboard.html">Dashboard</a></li>
                     <li><button onclick="openModal('login-modal')">Login</button></li>
@@ -49,6 +49,8 @@
                     <label for="signup-password">Password</label>
                     <input type="password" id="signup-password" name="password" required>
 
+                    <p>Already have an account? <a href="">Login Here</a></p>
+
                     <button type="submit" class="modal-btn">Create Account</button>
                 </form>
             </div>
@@ -66,6 +68,10 @@
                     <label for="login-password">Password</label>
                     <input type="password" id="login-password" name="password" required>
 
+                    <div class="forget-password">
+                        <p>Don't have an account? <a href="">Sign Up Here!</a></p>
+                        
+                    </div>
                     <button type="submit" class="modal-btn">Login</button>
                 </form>
             </div>
@@ -76,9 +82,9 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <p>Welcome to RemindFlow</p>
+                <p>Welcome to Email-Scheduler</p>
                 <h1>Your Ultimate Scheduler, <br><span>And Reminder Tool.</span></h1>
-                <p>Schedule emails effortlessly and stay ahead. RemindFlow helps you manage your time and messages — so
+                <p>Schedule emails effortlessly and stay ahead. Email-Scheduler helps you manage your time and messages — so
                     nothing slips through the cracks.</p>
                 <div class="cta-buttons">
                     <button class="cta-btn">Get Started</button>

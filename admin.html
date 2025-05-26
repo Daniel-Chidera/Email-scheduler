@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Assets/css/admin.css">
+    <title>Admin Dashboard - Reminder App</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Reminder App</h1>
+            <div class="admin-info">
+                <span>Admin Name</span>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Manage Users</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> View All Reminders</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> System Settings</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Activity Logs</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <div class="dashboard-panels">
+                <div class="card">📊 Total Users: <span id="total-users">0</span></div>
+                <div class="card">📝 Total Reminders: <span id="total-reminders">0</span></div>
+                <div class="card">🔁 Recurring Reminders: <span id="recurring-reminders">0</span></div>
+                <div class="card">📬 Email Sent Count: <span id="email-sent">0</span></div>
+                <div class="card">🔒 Recent Logins: <span id="recent-logins">0</span></div>
+                <div class="card">⚙️ System Status: <span id="system-status">Online</span></div>
+            </div>
+            <div class="table-container">
+                <h2>Manage Users</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Created Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                        <!-- User rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit User</h2>
+            <form id="edit-user-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script src="Assets/js/admin.js"></script>
+</body>
+</html>
