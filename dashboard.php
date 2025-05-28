@@ -112,31 +112,36 @@
 
     <div class="modal" id="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Add New Reminder</h2>
-            <input type="text" id="reminder-input" placeholder="Enter reminder">
-            <input type="email" id="email-input" placeholder="Enter email">
-            <input type="date" id="date-input">
-            <input type="time" id="time-input">
+            <form action="php/add-reminder.php" method="POST">
 
-            <div class="repeat-reminder">
-                <label class="repeat-toggle">
-                    <input type="checkbox" id="repeat-checkbox">
-                    Repeat Reminder?
-                </label>
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Add New Reminder</h2>
+                <input type="text" name="description" id="reminder-input" placeholder="Enter reminder">
+                <input type="email" name="email" id="email-input" placeholder="Enter email">
+                <input type="date" name="reminder_date" id="date-input" required>
+                <input type="time" name="reminder-time" id="time-input" required>
 
-                <div id="repeat-options">
-                    <label for="repeat-frequency">Repeat Frequency:</label>
-                    <select id="repeat-frequency">
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
+                <div class="repeat-reminder">
+                    <label class="repeat-toggle">
+                        <input type="checkbox" id="repeat-checkbox" name="repeat_checkbox">
+                        Repeat Reminder?
+                    </label>
+
+                    <div id="repeat-options">
+                        <label for="repeat-frequency">Repeat Frequency:</label>
+                        <select id="repeat-frequency" name="repeat_interval">
+                            <option value="none">Don't Repeat</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <button onclick="addReminder()">Add</button>
+                <!-- <button onclick="addReminder()">Add</button> -->
+                 <button type="submit">Add</button>
+            </form>
         </div>
     </div>
     <script src="Assets/js/dashboard.js"></script>

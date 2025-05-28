@@ -124,6 +124,8 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: auto;
+  pointer-events: auto;
+  transition: opacity 0.9s ease;
 }
 
 .modal-content {
