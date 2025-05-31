@@ -17,13 +17,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE reminder (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    description VARCHAR(250) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    email VARCHAR(255) NOT NULL,
     reminder_date DATE NOT NULL,
     reminder_time TIME NOT NULL,
-    repeat_interval ENUM('none', 'daily', 'weekly', 'monthly') DEFAULT 'none',
+    repeat_reminder BOOLEAN DEFAULT 0,
+    frequency ENUM('none', 'daily', 'weekly', 'monthly', 'yearly') DEFAULT 'none',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEy (user_id) REFERENCES users(id) ON DELETE CASCADE
+
+    CONSTRAINT fk_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
 );
 
 -- REFERENCES users(id) - This tells the database which table and column the foreign key points to

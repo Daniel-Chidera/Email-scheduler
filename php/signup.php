@@ -2,7 +2,7 @@
 require_once 'db-config.php';
 
 // IF THE FORM IS SUBMITTED WITH POST METHOD
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // trim removes whitespace from the beginning and end of the string
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -47,15 +47,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Signup Successful";
         header("Location: ../index.html?signup=success");
         exit();
-    }
-    else {
-        echo "Error: " . $stmt->error; 
+    } else {
+        echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
     $conn->close();
-}
-else {
+} else {
     // NOT A POST REQUEST?
     echo "INVALID REQUEST METHOD";
     exit;

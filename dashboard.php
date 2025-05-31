@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+require_once './php/db-config.php';
+// require_once 'logout.php';
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +31,7 @@
                     <li><a href="#"><i class="fas fa-envelope"></i> Scheduled Emails</a></li>
                     <li><a href="#"><i class="fas fa-history"></i> History</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li> <a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
         </aside>
@@ -32,7 +42,8 @@
                     <i id="menu-icon" class="fas fa-bars"></i>
                 </div>
 
-                <div class="header-title">Welcome, User</div>
+                <!-- MAKING IT DISPLAY THE NAME OF THE USER -->
+                <div class="header-title">Welcome <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : ''; ?></div>
 
                 <div class="search-user">
                     <input type="text" placeholder="Search...">
@@ -59,7 +70,39 @@
                             <th>Repeat</th>
                         </tr>
                     </thead>
-                    <tbody id="reminder-list"></tbody>
+                    <tbody id="reminder-list">
+                        <?php
+                        $user_id = $_SESSION['user_id'];
+
+                        $sql = "SELECT * FROM reminder WHERE user_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $user_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0):
+                            while ($row = $result->fetch_assoc()):
+                        ?>
+                                <tr class="reminder-row"
+                                    data-id="<?= $row['id'] ?>"
+                                    data-text="<?= htmlspecialchars($row['description']) ?>"
+                                    data-email="<?= htmlspecialchars($row['email']) ?>"
+                                    data-date="<?= $row['reminder_date'] ?>"
+                                    data-time="<?= $row['reminder_time'] ?>">
+                                    <td><?= htmlspecialchars($row['description']) ?></td>
+                                    <td><?= htmlspecialchars($row['email']) ?></td>
+                                    <td><?= $row['reminder_date'] ?></td>
+                                    <td><?= $row['reminder_time'] ?></td>
+                                    <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
+                                </tr>
+                            <?php endwhile;
+                        else: ?>
+                            <tr>
+                                <td colspan="5">No reminders found.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+
                 </table>
 
                 <!-- Edit Reminder Modal -->
@@ -117,19 +160,19 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Add New Reminder</h2>
                 <input type="text" name="description" id="reminder-input" placeholder="Enter reminder">
-                <input type="email" name="email" id="email-input" placeholder="Enter email">
-                <input type="date" name="reminder_date" id="date-input" required>
-                <input type="time" name="reminder-time" id="time-input" required>
+                <input type="email" name="email" id="email-input" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" placeholder="Enter email">
+                <input type="date" name="reminder_date" id="date-input" value="<?php echo date('Y-m-d'); ?>" required>
+                <input type="time" name="reminder_time" id="time-input" value="<?php echo date('H:i'); ?>" required>
 
                 <div class="repeat-reminder">
                     <label class="repeat-toggle">
-                        <input type="checkbox" id="repeat-checkbox" name="repeat_checkbox">
+                        <input type="checkbox" id="repeat-checkbox" name="repeat_reminder">
                         Repeat Reminder?
                     </label>
 
                     <div id="repeat-options">
                         <label for="repeat-frequency">Repeat Frequency:</label>
-                        <select id="repeat-frequency" name="repeat_interval">
+                        <select id="repeat-frequency" name="frequency">
                             <option value="none">Don't Repeat</option>
                             <option value="daily">Daily</option>
                             <option value="weekly">Weekly</option>
@@ -140,7 +183,7 @@
                 </div>
 
                 <!-- <button onclick="addReminder()">Add</button> -->
-                 <button type="submit">Add</button>
+                <button type="submit">Add</button>
             </form>
         </div>
     </div>
