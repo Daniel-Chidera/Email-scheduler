@@ -2,11 +2,36 @@
 session_start();
 
 require_once './php/db-config.php';
-// require_once 'logout.php';
+
+// FOR THE TIMEOUT 
+$timeout_duration = 1200; //900 is 15 mins
+
+// if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.html");
+    exit();
+}
+
+// CHECK LAST ACTIVITY ON THE DASHBOARD and activating it on the last activity
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration)  {
+
+    session_unset();
+    session_destroy();
+    header("Location: index.html?dashboard-timeout=true");
+    exit();
+}
+
+// to update the time stamp
+$_SESSION['LAST_ACTIVITY'] = time();
 
 
-
+// FOR THE USER PROFILE INITIALS
+$full_name = $_SESSION['full_name'] ?? 'User'; // Get full name from session or default to 'User'
+$words = explode(' ', $full_name); // Split name into words
+$initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($words[1], 0, 1) : '')); // Build initials
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,16 +72,17 @@ require_once './php/db-config.php';
 
                 <div class="search-user">
                     <input type="text" placeholder="Search...">
-                    <div class="user-icon">U</div>
+                    <div class="user-icon">
+                        <?php echo $initials; ?>
+                    </div>
                 </div>
             </header>
 
-            <section class="stats">
-                <div class="stat-card">Total Reminders: <span id="total-reminders">0</span></div>
-                <div class="stat-card">Upcoming Events: <span id="upcoming-events">0</span></div>
-                <div class="stat-card">Emails Sent: <span id="emails-sent">0</span></div>
-                <div class="stat-card">Missed Alerts: <span id="missed-alerts">0</span></div>
-            </section>
+           <!-- THE STATS SECTION  -->
+            <?php 
+                include_once 'stats-section.php';
+            ?>
+
 
             <section class="recent-reminders">
                 <h2>Recent Reminders</h2>
@@ -105,41 +131,11 @@ require_once './php/db-config.php';
 
                 </table>
 
-                <!-- Edit Reminder Modal -->
-                <div id="editModal" class="edit-modal">
-                    <div class="edit-modal-content">
-                        <span class="edit-modal-close" id="editModalCloseBtn">&times;</span>
-                        <h2>Edit Reminder</h2>
-                        <form id="editModalForm">
-                            <label for="editModalText">Reminder:</label>
-                            <input type="text" id="editModalText" name="editModalText" required />
+                <!-- Edit Reminder Modal File-->
+                <?php include_once 'edit-dashboard.php' ?>
 
-                            <label for="editModalEmail">Email:</label>
-                            <input type="email" id="editModalEmail" name="editModalEmail" required />
-
-                            <label for="editModalDate">Date:</label>
-                            <input type="date" id="editModalDate" name="editModalDate" required />
-
-                            <label for="editModalTime">Time:</label>
-                            <input type="time" id="editModalTime" name="editModalTime" required />
-
-                            <input type="hidden" id="editModalIndex" name="editModalIndex" />
-
-                            <button type="submit">Save Changes</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Delete Confirmation Modal -->
-                <div id="deleteModal" class="delete-modal">
-                    <div class="delete-modal-content">
-                        <h3>Are you sure you want to delete this reminder?</h3>
-                        <div class="delete-modal-buttons">
-                            <button id="deleteModalConfirmBtn">Yes, Delete</button>
-                            <button id="deleteModalCancelBtn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Delete Confirmation Modal File -->
+               <?php include_once 'edit-dashboard.php'?>
             </section>
 
 
