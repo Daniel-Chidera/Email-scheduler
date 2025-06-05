@@ -21,7 +21,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
     exit();
 }
 
-// to update the time stamp
+// To update the time stamp
 $_SESSION['LAST_ACTIVITY'] = time();
 
 
@@ -53,9 +53,11 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 <ul>
                     <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
                     <li><a href="#" onclick="openModal()"><i class="fas fa-plus-circle"></i> Create Reminder</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> Scheduled Emails</a></li>
                     <li><a href="#"><i class="fas fa-history"></i> History</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="deleteAllMenuItem">
+                        <i class="fas fa-trash-alt"></i> Delete All Reminders
+                    </li>
                     <li> <a href="php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
@@ -68,7 +70,8 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 </div>
 
                 <!-- MAKING IT DISPLAY THE NAME OF THE USER -->
-                <div class="header-title">Welcome <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : ''; ?></div>
+                <div class="header-title">Welcome
+                    <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : ''; ?></div>
 
                 <div class="search-user">
                     <input type="text" placeholder="Search...">
@@ -78,7 +81,7 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 </div>
             </header>
 
-           <!-- THE STATS SECTION  -->
+            <!-- THE STATS SECTION  -->
             <?php 
                 include_once 'stats-section.php';
             ?>
@@ -109,23 +112,21 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                         if ($result->num_rows > 0):
                             while ($row = $result->fetch_assoc()):
                         ?>
-                                <tr class="reminder-row"
-                                    data-id="<?= $row['id'] ?>"
-                                    data-text="<?= htmlspecialchars($row['description']) ?>"
-                                    data-email="<?= htmlspecialchars($row['email']) ?>"
-                                    data-date="<?= $row['reminder_date'] ?>"
-                                    data-time="<?= $row['reminder_time'] ?>">
-                                    <td><?= htmlspecialchars($row['description']) ?></td>
-                                    <td><?= htmlspecialchars($row['email']) ?></td>
-                                    <td><?= $row['reminder_date'] ?></td>
-                                    <td><?= $row['reminder_time'] ?></td>
-                                    <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
-                                </tr>
-                            <?php endwhile;
+                        <tr class="reminder-row" data-id="<?= $row['id'] ?>"
+                            data-text="<?= htmlspecialchars($row['description']) ?>"
+                            data-email="<?= htmlspecialchars($row['email']) ?>" data-date="<?= $row['reminder_date'] ?>"
+                            data-time="<?= $row['reminder_time'] ?>">
+                            <td><?= htmlspecialchars($row['description']) ?></td>
+                            <td><?= htmlspecialchars($row['email']) ?></td>
+                            <td><?= $row['reminder_date'] ?></td>
+                            <td><?= $row['reminder_time'] ?></td>
+                            <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
+                        </tr>
+                        <?php endwhile;
                         else: ?>
-                            <tr>
-                                <td colspan="5">No reminders found.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="5">No reminders found.</td>
+                        </tr>
                         <?php endif; ?>
                     </tbody>
 
@@ -135,7 +136,7 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 <?php include_once 'edit-dashboard.php' ?>
 
                 <!-- Delete Confirmation Modal File -->
-               <?php include_once 'edit-dashboard.php'?>
+                <?php include_once 'edit-dashboard.php'?>
             </section>
 
 
@@ -156,7 +157,9 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Add New Reminder</h2>
                 <input type="text" name="description" id="reminder-input" placeholder="Enter reminder">
-                <input type="email" name="email" id="email-input" value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>" placeholder="Enter email">
+                <input type="email" name="email" id="email-input"
+                    value="<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>"
+                    placeholder="Enter email">
                 <input type="date" name="reminder_date" id="date-input" value="<?php echo date('Y-m-d'); ?>" required>
                 <input type="time" name="reminder_time" id="time-input" value="<?php echo date('H:i'); ?>" required>
 
@@ -183,6 +186,19 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
             </form>
         </div>
     </div>
+
+
+    <!-- THIS IS FOR THE DELETE ALL REMINDER -->
+    <section class="delete-all-reminder-modal-wrapper" id="deleteAllReminderModal">
+        <article class="delete-all-reminder-modal-box">
+            <h3>Are you sure you want to delete all reminders?</h3>
+            <div class="delete-all-reminder-modal-actions">
+                <button id="confirmDeleteAllBtn">Yes, Delete</button>
+                <button id="cancelDeleteAllBtn">Cancel</button>
+            </div>
+        </article>
+    </section>
+
     <script src="Assets/js/dashboard.js"></script>
     <script src="Assets/js/remindermodal.js"></script>
 </body>

@@ -129,3 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
+// THIS IS FOR THE DELETE ALL REMINDERS
+document.getElementById("deleteAllMenuItem").addEventListener("click", function () {
+  document.getElementById("deleteAllReminderModal").style.display = "flex";
+});
+
+document.getElementById("cancelDeleteAllBtn").addEventListener("click", function () {
+  document.getElementById("deleteAllReminderModal").style.display = "none";
+});
+
+document.getElementById("confirmDeleteAllBtn").addEventListener("click", function () {
+  // Send request to delete all reminders
+  window.location.href = "./php/delete_all.php";
+});

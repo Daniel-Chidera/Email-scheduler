@@ -49,6 +49,15 @@ nav ul {
 
 nav ul li {
     margin: 15px 0;
+    cursor:  pointer;
+}
+
+li#deleteAllMenuItem {
+    cursor: pointer !important;
+}
+
+li#deleteAllMenuItem:hover{
+    color: #007BFF;
 }
 
 nav ul li a {
@@ -424,6 +433,49 @@ select#repeat-frequency {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* THIS IS FOR THE DELETE ALL REMINDER */
+.delete-all-reminder-modal-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-all-reminder-modal-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.delete-all-reminder-modal-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-all-reminder-modal-actions button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#confirmDeleteAllBtn {
+    background-color: #d9534f;
+    color: white;
+}
+
+#cancelDeleteAllBtn {
+    background-color: #6c757d;
+    color: white;
+}
+
 
 @media screen and (max-width: 768px) {
     .sidebar {
