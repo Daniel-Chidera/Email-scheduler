@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // CHECK LAST ACTIVITY ON THE DASHBOARD and activating it on the last activity
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration)  {
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
 
     session_unset();
     session_destroy();
@@ -82,10 +82,9 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
             </header>
 
             <!-- THE STATS SECTION  -->
-            <?php 
-                include_once 'stats-section.php';
+            <?php
+            include_once 'stats-section.php';
             ?>
-
 
             <section class="recent-reminders">
                 <h2>Recent Reminders</h2>
@@ -112,21 +111,21 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                         if ($result->num_rows > 0):
                             while ($row = $result->fetch_assoc()):
                         ?>
-                        <tr class="reminder-row" data-id="<?= $row['id'] ?>"
-                            data-text="<?= htmlspecialchars($row['description']) ?>"
-                            data-email="<?= htmlspecialchars($row['email']) ?>" data-date="<?= $row['reminder_date'] ?>"
-                            data-time="<?= $row['reminder_time'] ?>">
-                            <td><?= htmlspecialchars($row['description']) ?></td>
-                            <td><?= htmlspecialchars($row['email']) ?></td>
-                            <td><?= $row['reminder_date'] ?></td>
-                            <td><?= $row['reminder_time'] ?></td>
-                            <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
-                        </tr>
-                        <?php endwhile;
+                                <tr class="reminder-row" data-id="<?= $row['id'] ?>"
+                                    data-text="<?= htmlspecialchars($row['description']) ?>"
+                                    data-email="<?= htmlspecialchars($row['email']) ?>" data-date="<?= $row['reminder_date'] ?>"
+                                    data-time="<?= $row['reminder_time'] ?>">
+                                    <td><?= htmlspecialchars($row['description']) ?></td>
+                                    <td><?= htmlspecialchars($row['email']) ?></td>
+                                    <td><?= $row['reminder_date'] ?></td>
+                                    <td><?= $row['reminder_time'] ?></td>
+                                    <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
+                                </tr>
+                            <?php endwhile;
                         else: ?>
-                        <tr>
-                            <td colspan="5">No reminders found.</td>
-                        </tr>
+                            <tr>
+                                <td colspan="5">No reminders found.</td>
+                            </tr>
                         <?php endif; ?>
                     </tbody>
 
@@ -136,7 +135,7 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 <?php include_once 'edit-dashboard.php' ?>
 
                 <!-- Delete Confirmation Modal File -->
-                <?php include_once 'edit-dashboard.php'?>
+                <?php include_once 'edit-dashboard.php' ?>
             </section>
 
 
