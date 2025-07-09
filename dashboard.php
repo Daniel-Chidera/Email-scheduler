@@ -120,6 +120,7 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                                     <td><?= $row['reminder_date'] ?></td>
                                     <td><?= $row['reminder_time'] ?></td>
                                     <td><?= $row['frequency'] ? htmlspecialchars($row['frequency']) : 'None' ?></td>
+
                                 </tr>
                             <?php endwhile;
                         else: ?>
@@ -132,17 +133,10 @@ $initials = strtoupper(substr($words[0], 0, 1) . (isset($words[1]) ? substr($wor
                 </table>
 
                 <!-- Edit Reminder Modal File-->
-                <?php include_once 'edit-dashboard.php' ?>
+                <?php include_once './php/edit-reminder.php' ?>
 
                 <!-- Delete Confirmation Modal File -->
-                <?php include_once 'edit-dashboard.php' ?>
-            </section>
-
-
-
-            <section class="calendar">
-                <h2>Calendar</h2>
-                <input type="date" id="date-picker">
+                <?php include_once './php/delete-reminder.php' ?>
             </section>
 
             <button class="add-reminder-btn" onclick="openModal()">Add New Reminder</button>
