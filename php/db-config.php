@@ -3,8 +3,6 @@
     $username = 'root';
     $password = 12345;
     $database = 'Email-Scheduler';
-
-
         $conn = mysqli_connect($host, $username, $password, $database);
 
     // CHHECKING THE CONNECTION
